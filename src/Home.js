@@ -4,7 +4,7 @@ import {
     Dialog,
     DialogContent, 
 } from "@mui/material"
-import React, { useState } from "react"
+import React  from "react"
 import FormPaper from "./FormPaper"
 import SearchForm from "./SearchForm"
 import axios from "axios"
@@ -12,7 +12,6 @@ import MUIDataTable from "mui-datatables";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
-// import { useSnackbar } from "../../context/snackbar-context"
 
 export default function Home(){
     const [data, setData] = React.useState(null)
@@ -42,9 +41,9 @@ export default function Home(){
         const data = new FormData(event.currentTarget);
 
         const queryParams = {
-          cpf_filter: data.get("cpf_filter"),
-          email_filter: data.get("email_filter"),
-          phone_filter: data.get("phone_filter"),
+          cpf: data.get("cpf_filter").match(/\d+/g).join(""),
+          email: data.get("email_filter"),
+          phone: data.get("phone_filter").match(/\d+/g).join(""),
         }
         axios.get("http://localhost/api/users_active",{params: queryParams})
             .then((resp) => {
