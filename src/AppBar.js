@@ -5,13 +5,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import { Badge } from '@mui/material';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { useNavigate } from 'react-router-dom';
-import LogoutIcon from '@mui/icons-material/Logout';
 
 export const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -35,16 +28,6 @@ export const AppBar = styled(MuiAppBar, {
 
 
 export function DrawerAppBar({open,drawerwidth,toggleDrawer}){
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const navigate = useNavigate()
-
-    const handleMenu = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-  
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     return(
         <AppBar position="absolute" open={open} drawerwidth={drawerwidth}>
@@ -74,41 +57,6 @@ export function DrawerAppBar({open,drawerwidth,toggleDrawer}){
           >
             FontesPromotora
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={0} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <div>
-            <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-            >
-                <AccountCircle />
-                </IconButton>
-                <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                    }}
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                >
-                    {/* <MenuItem onClick={handleClose}>Perfil</MenuItem> */}
-                    <MenuItem onClick={console.log("")}><LogoutIcon />Sair</MenuItem>
-                </Menu>
-            </div>
         </Toolbar>
       </AppBar>
     )
