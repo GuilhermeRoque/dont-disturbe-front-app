@@ -6,7 +6,7 @@
 # docker run --rm -it -p 8080:80 react-nginx
 
 # Name the node stage "builder"
-FROM node:14 AS builder
+FROM node:14
 # Set working directory
 WORKDIR /app
 # Copy all files from current directory to working dir in image
