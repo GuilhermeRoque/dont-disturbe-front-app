@@ -40,10 +40,13 @@ export default function Home(){
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
+
+        const cpf_filter = data.get("cpf_filter")
+        const phone_filter = data.get("phone_filter")
         const queryParams = {
-          cpf: data.get("cpf_filter").match(/\d+/g).join(""),
+          cpf: cpf_filter?cpf_filter.match(/\d+/g).join(""):cpf_filter,
           email: data.get("email_filter"),
-          phone: data.get("phone_filter").match(/\d+/g).join(""),
+          phone: phone_filter?phone_filter.match(/\d+/g).join(""):phone_filter
         }
         axios.get("http://localhost/api/users_active",{params: queryParams})
             .then((resp) => {
