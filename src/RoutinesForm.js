@@ -56,7 +56,7 @@ export default function RoutinesForm({handleNewData}){
         uploadFormData.append('file', file);
         const path = formData.get("routine")
         const importOptionName = importRoutinesOptions.find((importOption) => importOption.path===path)
-        axios.post("http://localhost:5000/import-routines"+path, uploadFormData)
+        axios.post("http://localhost/api/import-routines"+path, uploadFormData)
         .then((resp) => {
             handleNewData(resp.data, importOptionName)
         })

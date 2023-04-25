@@ -46,7 +46,7 @@ export default function Home(){
           email_filter: data.get("email_filter"),
           phone_filter: data.get("phone_filter"),
         }
-        axios.get("http://localhost:5000/users_active",{params: queryParams})
+        axios.get("http://localhost/api/users_active",{params: queryParams})
             .then((resp) => {
                 let expanded_data = []
                 for (let index = 0; index < 10; index++) {
